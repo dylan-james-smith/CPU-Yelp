@@ -21,13 +21,13 @@ class BusinessCell: UITableViewCell {
     
     var business: Business! {
         didSet {
-            nameLabel.text = business.name;
-            thumbImageView.setImageWithURL(business.imageURL!);
-            categoriesLabel.text = business.categories;
-            addressLabel.text = business.address;
-            ratingCountLabel.text = "\(business.reviewCount!) Reviews";
-            ratingImageView.setImageWithURL(business.ratingImageURL!);
-            distanceLabel.text = business.distance;
+            nameLabel.text = business.name
+            thumbImageView.setImageWithURL(business.imageURL!)
+            categoriesLabel.text = business.categories
+            addressLabel.text = business.address
+            ratingCountLabel.text = "\(business.reviewCount!) Reviews"
+            ratingImageView.setImageWithURL(business.ratingImageURL!)
+            distanceLabel.text = business.distance
             
         }
     }
@@ -36,8 +36,8 @@ class BusinessCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        thumbImageView.layer.cornerRadius = 3;
-        thumbImageView.clipsToBounds = true;
+        thumbImageView.layer.cornerRadius = 3
+        thumbImageView.clipsToBounds = true
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

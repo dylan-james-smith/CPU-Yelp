@@ -1,10 +1,8 @@
- //
+//
 //  BusinessesViewController.swift
 //  Yelp
 //
 //  Created by Timothy Lee on 4/23/15.
-//  Modified by Dylan James Smith 1/27/16.
-//
 //  Copyright (c) 2015 Timothy Lee. All rights reserved.
 //
 
@@ -28,23 +26,25 @@ class BusinessesViewController: UIViewController,  UITableViewDataSource, UITabl
 
         Business.searchWithTerm("Thai", completion: { (businesses: [Business]!, error: NSError!) -> Void in
             self.businesses = businesses
-            
+            self.tableView.reloadData()
+        
             for business in businesses {
                 print(business.name!)
                 print(business.address!)
             }
         })
 
-/* Example of Yelp search with more search options specified
-        Business.searchWithTerm("Restaurants", sort: .Distance, categories: ["asianfusion", "burgers"], deals: true) { (businesses: [Business]!, error: NSError!) -> Void in
-            self.businesses = businesses
-            
-            for business in businesses {
-                print(business.name!)
-                print(business.address!)
-            }
-        }
-*/
+// Example of Yelp search with more search options specified
+        
+//        Business.searchWithTerm("Restaurants", sort: .Distance, categories: ["asianfusion", "burgers"], deals: true) { (businesses: [Business]!, error: NSError!) -> Void in
+//            self.businesses = businesses
+//            
+//            for business in businesses {
+//                print(business.name!)
+//                print(business.address!)
+//            }
+//        }
+//
     }
 
     override func didReceiveMemoryWarning() {
@@ -70,9 +70,7 @@ class BusinessesViewController: UIViewController,  UITableViewDataSource, UITabl
     // This method updates filteredData based on the text in the Search Box
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         
-        if filteredBusinesses == nil  {
-            filteredBusinesses = businesses
-        }
+        let filteredBusinesses = self.filteredBusinesses ?? businesses
         
         // When there is no text, filteredData is the same as the original data
         if searchText.isEmpty {
