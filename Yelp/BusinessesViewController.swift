@@ -16,13 +16,15 @@ class BusinessesViewController: UIViewController,  UITableViewDataSource, UITabl
     var businesses: [Business]!
     var filteredBusinesses: [Business]!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.dataSource = self
-        
         searchBar.delegate = self
+        
+        navigationItem.titleView = searchBar
 
         Business.searchWithTerm("Thai", completion: { (businesses: [Business]!, error: NSError!) -> Void in
             self.businesses = businesses
@@ -89,6 +91,7 @@ class BusinessesViewController: UIViewController,  UITableViewDataSource, UITabl
                 }
             })
         }
+        
         tableView.reloadData()
     }
 
