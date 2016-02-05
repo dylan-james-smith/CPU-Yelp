@@ -24,6 +24,9 @@ class BusinessesViewController: UIViewController,  UITableViewDataSource, UITabl
         tableView.dataSource = self
         searchBar.delegate = self
         
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 120
+        
         navigationItem.titleView = searchBar
 
         Business.searchWithTerm("Thai", completion: { (businesses: [Business]!, error: NSError!) -> Void in
@@ -72,7 +75,10 @@ class BusinessesViewController: UIViewController,  UITableViewDataSource, UITabl
     // This method updates filteredData based on the text in the Search Box
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         
-        let filteredBusinesses = self.filteredBusinesses ?? businesses
+//        filteredBusinesses = self.filteredBusinesses ?? businesses
+        if filteredBusinesses == nil {
+            filteredBusinesses = businesses
+        }
         
         // When there is no text, filteredData is the same as the original data
         if searchText.isEmpty {
