@@ -2,7 +2,7 @@
 //  BusinessCell.swift
 //  Yelp
 //
-//  Created by Tejen Hasmukh Patel on 1/31/16.
+//  Created by Dylan James Smith on 2/1/16.
 //  Copyright © 2016 Timothy Lee. All rights reserved.
 //
 
@@ -38,13 +38,13 @@ class BusinessCell: UITableViewCell {
         
         thumbImageView.layer.cornerRadius = 5
         thumbImageView.clipsToBounds = true
-        
         nameLabel.preferredMaxLayoutWidth = nameLabel.frame.size.width
+        addressLabel.preferredMaxLayoutWidth = addressLabel.frame.size.width
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+        addressLabel.preferredMaxLayoutWidth = addressLabel.frame.size.width
         nameLabel.preferredMaxLayoutWidth = nameLabel.frame.size.width
     }
     
