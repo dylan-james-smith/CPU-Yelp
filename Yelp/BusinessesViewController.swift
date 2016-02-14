@@ -21,6 +21,7 @@ class BusinessesViewController: UIViewController,  UITableViewDataSource, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NSLog(">>>viewDidLoad")
         
         searchBar = UISearchBar()
         searchBar.sizeToFit()
@@ -80,12 +81,14 @@ class BusinessesViewController: UIViewController,  UITableViewDataSource, UITabl
 
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        NSLog(">>>tableView cellForRowAtIndexPath")
         let cell = tableView.dequeueReusableCellWithIdentifier("BusinessCell", forIndexPath: indexPath) as! BusinessCell
         cell.business = filteredBusinesses[indexPath.row]
         return cell
     }
     
-        func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        NSLog(">>>tableView numberOfRowsInSection")
         if filteredBusinesses != nil {
             return filteredBusinesses.count
         } else {
@@ -94,12 +97,13 @@ class BusinessesViewController: UIViewController,  UITableViewDataSource, UITabl
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        NSLog(">>>searchBar")
         updateSearchResults()
         tableView.reloadData()
     }
     
     func updateSearchResults() {
-
+        NSLog(">>>updateSearchResults")
         if let searchText = searchBar.text {
             filteredBusinesses = searchText.isEmpty ? businesses : businesses.filter({(dataString: Business) -> Bool in
                 if dataString.name!.rangeOfString(searchText, options: .CaseInsensitiveSearch) != nil {
@@ -115,6 +119,7 @@ class BusinessesViewController: UIViewController,  UITableViewDataSource, UITabl
     }
 
     @IBAction func onTap(sender: UITapGestureRecognizer) {
+        NSLog(">>>onTap")
         searchBar.resignFirstResponder()
         print("tapped")
     }
